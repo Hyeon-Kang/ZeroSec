@@ -1,2 +1,27 @@
 https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
 [도커 기본 개념 참조]
+
+도커 설치하기
+[참초 : https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html]
+
+
+
+root 권한으로 한 번에 설치하기
+
+curl -fsSL https://get.docker.com/ | sudo sh
+
+
+
+sudo 없이 사용하기
+
+docker는 기본적으로 root권한이 필요합니다.
+root가 아닌 사용자가 sudo없이 사용하려면 해당 사용자를 docker그룹에 추가합니다.
+사용자가 로그인 중이라면 다시 로그인 후 권한이 적용됩니다.
+
+
+
+설치확인하기
+
+docker version
+
+Client와 Server 정보가 정상적으로 출력되었다면 설치가 완료된 것 입니다.
