@@ -72,3 +72,66 @@ exit로 bash 쉘을 종료하면 컨테이너도 같이 종료됩니다.
 
 필요에 따라 redis나 sql 컨테이너를 설치하여 DB 서버로 사용 가능함.
 (redis 등 NoSQL에 대한 간략한 개념 설명 : https://genesis8.tistory.com/189)
+
+
+
+
+도커 기본 명령어
+
+컨테이너 목록 확인하기 (ps)
+docker ps [OPTIONS]
+docker ps -a
+
+
+컨테이너 중지하기 (stop)
+docker stop [OPTIONS] CONTAINER [CONTAINER...]
+docker stop ${TENSORFLOW_CONTAINER_ID} -> 컨테이너 ID
+
+
+컨테이너 제거하기 (rm)
+docker rm [OPTIONS] CONTAINER [CONTAINER...]
+docker rm ${UBUNTU_CONTAINER_ID} ${TENSORFLOW_CONTAINER_ID} -> ID를 연속으로 입력하여 동시 삭제 가능
+
+
+
+* 중지된 컨테이너를 일일이 삭제 하는 건 귀찮은 일입니다. -> 중지된 컨테이너 일괄삭제
+
+docker rm -v $(docker ps -a -q -f status=exited)
+
+명령어를 입력하면 중지된 컨테이너 ID를 가져와서 한번에 삭제합니다.
+
+
+
+다운받은 이미지 목록 확인하기 (images)
+
+docker images [OPTIONS] [REPOSITORY[:TAG]]
+docker images
+
+
+이미지 다운로드하기 (pull)
+
+docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+docker pull ubuntu:14.04    -> 16.04 이미지 다운로드 예시
+
+
+이미지 삭제하기 (rmi)
+
+docker rmi [OPTIONS] IMAGE [IMAGE...]
+docker rmi ${TENSORFLOW_IMAGE_ID}
+
+
+컨테이너 둘러보기 (모니터링!!)
+
+컨테이너 로그 보기 (logs)
+컨테이너가 정상적으로 동작하는지 확인하는 좋은 방법은 로그를 확인하는 것 입니다.
+
+docker logs [OPTIONS] CONTAINER
+docker logs ${WORDPRESS_CONTAINER_ID}
+
+* 로그가 너무 많으니 -tail 옵션으로 마지막 10줄만 추려보자.
+docker logs --tail 10 ${WORDPRESS_CONTAINER_ID}
+
+*마지막 10줄만 보니 좀 나아 보입니다.
+이제 실시간으로 로그가 생성되는 걸 확인해보겠습니다.
+-f 옵션으로 실행합니다.
+docker logs -f ${WORDPRESS_CONTAINER_ID}
