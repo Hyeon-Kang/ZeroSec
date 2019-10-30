@@ -135,3 +135,8 @@ docker logs --tail 10 ${WORDPRESS_CONTAINER_ID}
 이제 실시간으로 로그가 생성되는 걸 확인해보겠습니다.
 -f 옵션으로 실행합니다.
 docker logs -f ${WORDPRESS_CONTAINER_ID}
+
+
+
+
+
