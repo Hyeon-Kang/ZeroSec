@@ -50,6 +50,18 @@ Cloud Native Application
 
 
 
+CLI 접근
+
+https://www.cloudfoundry.org/docs-download/
+
+application runtime -> installing cf CLI
+
+(https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+
+Install the cf CLI Using a Compressed Binary 선택
+(https://github.com/cloudfoundry/cli#installers-and-compressed-binaries)
+
+
 
 
 
