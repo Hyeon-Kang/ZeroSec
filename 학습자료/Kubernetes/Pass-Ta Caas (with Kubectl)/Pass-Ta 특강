@@ -50,6 +50,10 @@ Cloud Native Application
 
 
 
+
+
+
+
 CLI 접근
 
 https://www.cloudfoundry.org/docs-download/
@@ -62,7 +66,16 @@ Install the cf CLI Using a Compressed Binary 선택
 (https://github.com/cloudfoundry/cli#installers-and-compressed-binaries)
 
 
+운영체제 환경에 맞추어 install 프로그램 설치
 
+
+
+windows 기준, cmd에서 cf를 입력하여 설치를 확인한다.
+
+
+> 로그인
+  $cf login -a(target) https://api.pass-ta.org --skip-ssl-validation
+cf login -a https://api.pass-ta.org --skip-ssl-validation
 
 
 
