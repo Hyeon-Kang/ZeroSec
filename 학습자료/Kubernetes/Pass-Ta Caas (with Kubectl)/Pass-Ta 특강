@@ -125,3 +125,11 @@ $cf apps / alias 'a'
 특정 app 상태 조회
 $cf app <APP_NAME>
 ex $ cf a testnx
+
+모든 벡엔드 서비스 조회
+cf services
+
+my sql 같은 특정 벡엔드 서비스 조회
+$cf service test_mysql_nginx
+
+질문 push 가능한 app 패키지 확장자는?
