@@ -89,3 +89,39 @@ cf login -a https://api.pass-ta.org --skip-ssl-validation
 
 
 2. nginX 등 타 서비스도 이하 동문
+
+
+
+
+
+
+
+
+191115 추가 실습 특강
+
+bosh나 cf 를 통해 터미널 접근이 가능하다.
+
+- 앱 배포 실습
+
+cf push
+
+- git 에다 업로드 후 형상관리
+
+[passta 설치]
+[bosh2 설치]
+[cl 명령 가이드] https://github.com/PaaS-TA/Guide-1.0-Spaghetti-/blob/master/Use-Guide/OpenPaas%20CLi%20%EA%B0%80%EC%9D%B4%EB%93%9C.md
+[리눅스 환경 cl 설치] https://docs.cloudfoundry.org/cf-cli/install-go-cli.html#pkg-linux
+
+
+cl 로그인 시도
+cf login --skip-ssl-validation https://api.paas-ta.org
+-> API endpoint: $https://api.paas-ta.org
+-> Email: $rkd099@naver.com
+-> Password : $
+
+app space 조회
+$cf apps / alias 'a'
+
+특정 app 상태 조회
+$cf app <APP_NAME>
+ex $ cf a testnx
