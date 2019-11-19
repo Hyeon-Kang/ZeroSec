@@ -10,5 +10,16 @@ http://aidev.co.kr/nlp/6097
 검색을 통해 지식그래프를 바로 생성하는 알고리즘
 http://aidev.co.kr/nlp/8053
 
+단어간 벡터값을 통한 유사도 비교 Word2Vec (단순 수치만? 특정 단어와 문장 토큰의 직접 비교는?)
+https://wikidocs.net/33520 (워드 임베딩)
+https://wikidocs.net/22660 (이론)
+https://wikidocs.net/50739 (실습)
+
+* 미리 학습된 word2vec 모델 사용하기
+https://drive.google.com/file/d/0B0ZXk88koS2KbDhXdWg1Q2RydlU/view (모델 다운로드)
+
+TextRank를 응용한 텍스트 비교
+https://lovit.github.io/nlp/2019/04/30/textrank/
+
 TextRank 기법을 이용한 핵심 어구 추출 및 텍스트 요약
 http://aidev.co.kr/nlp/6712
