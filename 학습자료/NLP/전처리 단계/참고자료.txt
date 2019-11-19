@@ -23,3 +23,15 @@ https://lovit.github.io/nlp/2019/04/30/textrank/
 
 TextRank 기법을 이용한 핵심 어구 추출 및 텍스트 요약
 http://aidev.co.kr/nlp/6712
+
+대한민국 지명 DB
+https://www.juso.go.kr/addrlink/addressBuildDev.do
+http://www.juso.go.kr/addrlink/addressBuildDevNew.do?menu=match
+
+지도 시각화 수단??
+1. 카카오
+http://apis.map.kakao.com/web/sample/chickenClusterer/ (지도 확대해서 다루기)
+2. 기타
+https://blog.hkwon.me/draw-korean-map-chart-with-geojson/
+https://shj7242.github.io/2018/01/16/geoInfo/
+키워드 : 지도 히트맵 그리기
