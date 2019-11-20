@@ -2,7 +2,7 @@ from urllib.parse import urlencode
 from collection import json_request as jr
 
 BASE_URL_FB_API = 'https://graph.facebook.com/v3.0'
-ACCESS_TOKEN = '엑세스 토큰 값 입력'
+ACCESS_TOKEN = 'EAAkeeirO45cBAK4h4Ce3fZAj7ExiJfNVp7P87LGZAwZBkVxF8PeH6p4PocG6eE72pKgjglLkDi3eeEzGrnGIkZCl2S1ghXxFzin87MWu5xYzyeVxseRKJFMxJqdz2g1GuqZAqRSAQ9WWfJLAIJGEpNQ9LROaV6rHuAkSiO22xZBMRiPg8een5zSSan7jZAI1zDxw74AwCRw1AZDZD'
 
 
 # 여러 파라미터에 대하여, url을 생성
