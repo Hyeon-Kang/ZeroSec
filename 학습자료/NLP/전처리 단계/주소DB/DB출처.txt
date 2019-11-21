@@ -1,0 +1,4 @@
+https://www.juso.go.kr/addrlink/addressBuildDev.do
+http://www.juso.go.kr/addrlink/addressBuildDevNew.do?menu=match
+
+이미 가공된 데이터 입니다 ㅎㅎ
