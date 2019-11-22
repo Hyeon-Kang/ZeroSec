@@ -1,3 +1,4 @@
+!pip install collection
 import collection.crawler as crawler
 
 if __name__ == '__main__':
