@@ -5,11 +5,10 @@ from bs4 import BeautifulSoup
 rsss = []
 
 # 파일은 아래 폴더에 저장됩니다.
-
 fileOut = open('RssfileOut.txt','w', encoding='utf-8')
 
-# rss와 기사에서 특정 부분을 크롤링하는 함수입니다.
 
+# rss와 기사에서 특정 부분을 크롤링하는 함수입니다.
 def crawler(url, parser, css_selector):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, parser)
