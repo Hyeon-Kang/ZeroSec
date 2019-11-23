@@ -24,7 +24,7 @@ def crawler(url, parser, css_selector):
             print("크롤링을 시작합니다.")
 
             # test link https://news.naver.com/main/home.nhn
-            crawler('link https://news.naver.com/main/home.nhn','xml','item link')
+            crawler('https://news.naver.com/main/home.nhn','xml','item link')
 
             print("rss 추출이 완료되었습니다.")
 
