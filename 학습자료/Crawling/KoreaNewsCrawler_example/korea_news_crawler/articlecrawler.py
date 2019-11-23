@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8, euc-kr -*-
 
+# pip install KoreaNewsCrawler bs4
 from time import sleep
 from bs4 import BeautifulSoup
 from multiprocessing import Process
@@ -59,14 +60,14 @@ class ArticleCrawler(object):
                 else:
                     year_startmonth = 1
                     year_endmonth = 12
-            
+
             for month in range(year_startmonth, year_endmonth + 1):
                 for month_day in range(1, calendar.monthrange(year, month)[1] + 1):
                     if len(str(month)) == 1:
                         month = "0" + str(month)
                     if len(str(month_day)) == 1:
                         month_day = "0" + str(month_day)
-                        
+
                     # 날짜별로 Page Url 생성
                     url = category_url + str(year) + str(month) + str(month_day)
 
@@ -90,12 +91,12 @@ class ArticleCrawler(object):
 
     def crawling(self, category_name):
         # Multi Process PID
-        print(category_name + " PID: " + str(os.getpid()))    
+        print(category_name + " PID: " + str(os.getpid()))
 
         writer = Writer(category_name=category_name, date=self.date)
 
         # 기사 URL 형식
-        url = "http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=" + str(self.categories.get(category_name)) + "&date="
+        url = "http://news.naver.com/main/home.nhn?mode=LSD&mid=shm&sid1=" + str(self.categories.get(category_name)) + "&date="
 
         # start_year년 start_month월 ~ end_year의 end_month 날짜까지 기사를 수집합니다.
         day_urls = self.make_news_page_url(url, self.date['start_year'], self.date['end_year'], self.date['start_month'], self.date['end_month'])
@@ -115,7 +116,7 @@ class ArticleCrawler(object):
             # 각 페이지에 있는 기사들 가져오기
             post_temp = document.select('.newsflash_body .type06_headline li dl')
             post_temp.extend(document.select('.newsflash_body .type06 li dl'))
-            
+
             # 각 페이지에 있는 기사들의 url 저장
             post = []
             for line in post_temp:
@@ -125,7 +126,7 @@ class ArticleCrawler(object):
             for content_url in post:  # 기사 URL
                 # 크롤링 대기 시간
                 sleep(0.01)
-                
+
                 # 기사 HTML 가져옴
                 request_content = self.get_url_data(content_url)
                 try:
@@ -154,13 +155,13 @@ class ArticleCrawler(object):
                     text_company = text_company + str(tag_company[0].get('content'))
                     if not text_company:  # 공백일 경우 기사 제외 처리
                         continue
-                        
+
                     # CSV 작성
                     wcsv = writer.get_writer_csv()
                     wcsv.writerow([news_date, category_name, text_company, text_headline, text_sentence, content_url])
-                    
+
                     del text_company, text_sentence, text_headline
-                    del tag_company 
+                    del tag_company
                     del tag_content, tag_headline
                     del request_content, document_content
 
@@ -180,5 +181,5 @@ class ArticleCrawler(object):
 if __name__ == "__main__":
     Crawler = ArticleCrawler()
     Crawler.set_category("생활문화", "IT과학")
-    Crawler.set_date_range(2017, 1, 2018, 4)
+    Crawler.set_date_range(2019, 10, 2019, 11)
     Crawler.start()
