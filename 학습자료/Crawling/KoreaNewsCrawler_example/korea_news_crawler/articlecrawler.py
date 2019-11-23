@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8, euc-kr -*-
-
 # pip install KoreaNewsCrawler bs4
 from time import sleep
 from bs4 import BeautifulSoup
@@ -13,7 +12,6 @@ import platform
 import calendar
 import requests
 import re
-
 
 class ArticleCrawler(object):
     def __init__(self):
@@ -103,7 +101,8 @@ class ArticleCrawler(object):
         writer = Writer(category_name=category_name, date=self.date)
 
         # 기사 URL 형식
-        url = "http://news.naver.com/main/home.nhn?mode=LSD&mid=shm&sid1=" + str(self.categories.get(category_name)) + "#&date="
+        #url = "http://news.naver.com/main/home.nhn?mode=LSD&mid=shm&sid1=" + str(self.categories.get(category_name)) + "&date="
+        url = "http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=" + str(self.categories.get(category_name)) + "&date="
 
         # start_year년 start_month월 ~ end_year의 end_month 날짜까지 기사를 수집합니다.
         day_urls = self.make_news_page_url(url, self.date['start_year'], self.date['end_year'], self.date['start_month'], self.date['end_month'])
@@ -193,8 +192,8 @@ class ArticleCrawler(object):
 
 if __name__ == "__main__":
     Crawler = ArticleCrawler()
-    Crawler.set_category("사회", "경제")
-    Crawler.set_date_range(2019, 11, 2019, 11)
+    Crawler.set_category("사회")
+    Crawler.set_date_range(2019, 11, 2019, 12)
     Crawler.start()
     #Crawler.crawling(category_name)
     print("작업 종료")
