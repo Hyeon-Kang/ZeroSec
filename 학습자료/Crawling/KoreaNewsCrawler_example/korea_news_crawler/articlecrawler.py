@@ -179,21 +179,17 @@ class ArticleCrawler(object):
                     pass
         writer.close()
 
+
+
     def start(self):
         # MultiProcess 크롤링 시작
         for category_name in self.selected_categories:
-            #crawling(category_name)
-            #crawling(self,category_name)
             proc = Process(target=self.crawling, args=(category_name,))
             proc.start()
-            proc.join()
-
 
 
 if __name__ == "__main__":
     Crawler = ArticleCrawler()
     Crawler.set_category("사회")
-    Crawler.set_date_range(2019, 11, 2019, 12)
+    Crawler.set_date_range(2018, 4, 2019, 12)
     Crawler.start()
-    #Crawler.crawling(category_name)
-    print("작업 종료")
