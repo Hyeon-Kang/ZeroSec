@@ -23,7 +23,8 @@ def crawler(url, parser, css_selector):
             # 실행코드
             print("크롤링을 시작합니다.")
 
-            crawler('http://file.mk.co.kr/news/rss/rss_50300009.xml','xml','item link')
+            # test link https://news.naver.com/main/home.nhn
+            crawler('link https://news.naver.com/main/home.nhn','xml','item link')
 
             print("rss 추출이 완료되었습니다.")
 
