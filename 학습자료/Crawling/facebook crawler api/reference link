@@ -1,4 +1,4 @@
-[Python 크롤링] 페이스북 페이지 크롤링 ( Graph API , JSON )
+﻿[Python 크롤링] 페이스북 페이지 크롤링 ( Graph API , JSON )
 ttps://victorydntmd.tistory.com/244
 
 기초 크롤링 연습
@@ -12,3 +12,12 @@ https://wikidocs.net/2833
 
 이상적인 크롤러 예제
 https://github.com/lumyjuwon/KoreaNewsCrawler
+
+dictionary > json 변환
+https://bluese05.tistory.com/37
+
+위치 구글지도에 표시
+http://blog.naver.com/PostView.nhn?blogId=kjbbae1998&logNo=221354375193&parentCategoryNo=&categoryNo=8&viewDate=&isShowPopularPosts=true&from=search
+
+구글 api로 지도 구현
+http://blog.naver.com/PostView.nhn?blogId=bgpoilkj&logNo=220943974483&parentCategoryNo=&categoryNo=23&viewDate=&isShowPopularPosts=true&from=search
