@@ -103,7 +103,7 @@ class ArticleCrawler(object):
         writer = Writer(category_name=category_name, date=self.date)
 
         # 기사 URL 형식
-        url = "http://news.naver.com/main/home.nhn?mode=LSD&mid=shm&sid1=" + str(self.categories.get(category_name)) + "&date="
+        url = "http://news.naver.com/main/home.nhn?mode=LSD&mid=shm&sid1=" + str(self.categories.get(category_name)) + "#&date="
 
         # start_year년 start_month월 ~ end_year의 end_month 날짜까지 기사를 수집합니다.
         day_urls = self.make_news_page_url(url, self.date['start_year'], self.date['end_year'], self.date['start_month'], self.date['end_month'])
@@ -183,12 +183,18 @@ class ArticleCrawler(object):
     def start(self):
         # MultiProcess 크롤링 시작
         for category_name in self.selected_categories:
+            #crawling(category_name)
+            #crawling(self,category_name)
             proc = Process(target=self.crawling, args=(category_name,))
             proc.start()
+            proc.join()
+
 
 
 if __name__ == "__main__":
     Crawler = ArticleCrawler()
-    Crawler.set_category("사회")
+    Crawler.set_category("사회", "경제")
     Crawler.set_date_range(2019, 11, 2019, 11)
     Crawler.start()
+    #Crawler.crawling(category_name)
+    print("작업 종료")
