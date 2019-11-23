@@ -1,3 +1,11 @@
+# 한글 깨짐 방지 출처: https://booolean.tistory.com/831 [Boolean]
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
+
+
 import requests
 from bs4 import BeautifulSoup
 
