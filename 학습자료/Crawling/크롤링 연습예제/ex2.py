@@ -1,22 +1,17 @@
-# 한글 깨짐 방지 출처: https://booolean.tistory.com/831 [Boolean]
-import sys
-import io
-
-sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
-
-
-import requests
+import requests 
 from bs4 import BeautifulSoup
 
-# 기사의 링크들이 담기는 리스트입니다.
+ 
+
+  # 기사의 링크들이 담기는 리스트입니다.
 rsss = []
 
-# 파일은 아래 폴더에 저장됩니다.
-fileOut = open('RssfileOut.txt','w', encoding='utf-8')
+ # 파일은 아래 폴더에 저장됩니다.
 
+fileOut = open('RssfileOout.txt','w', encoding='utf-8')
 
-# rss와 기사에서 특정 부분을 크롤링하는 함수입니다.
+ # rss와 기사에서 특정 부분을 크롤링하는 함수입니다.
+
 def crawler(url, parser, css_selector):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, parser)
@@ -28,22 +23,21 @@ def crawler(url, parser, css_selector):
         for data in datas:
             rsss.append(data.text)
 
-            # 실행코드
-            print("크롤링을 시작합니다.")
+ # 실행코드
+print("크롤링을 시작합니다.")
 
-            # test link https://news.naver.com/main/home.nhn
-            crawler('https://news.naver.com/main/home.nhn','xml','item link')
+crawler('http://file.mk.co.kr/news/rss/rss_50300009.xml','xml','item link')
 
-            print("rss 추출이 완료되었습니다.")
+print("rss 추출이 완료되었습니다.")
 
-            for link in rsss:
-                try:
-                    crawler(link, 'lxml', '#article_body')
-                    print("="*20)
-                except Exception as e:
-                    print(e)
-                    print('진행중이에요...')
-                    continue
+for link in rsss:
+    try:
+        crawler(link, 'lxml', '#article_body')
+        print("="*20)
+    except Exception as e:
+        print(e)
+        print('진행중이에요...')
+        continue
 
-                    print("크롤링을 종료합니다.")
-                    fileOut.close()
+print("크롤링을 종료합니다.")
+
