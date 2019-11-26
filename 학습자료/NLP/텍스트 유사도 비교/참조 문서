@@ -3,9 +3,24 @@ https://code-ing.tistory.com/1
 
 Word2Vec 임베딩 학습모델 기반
 https://ratsgo.github.io/natural%20language%20processing/2017/03/08/word2vec/
+https://code-ing.tistory.com/1
 
 빈도수 세기 추가 자료
 https://ratsgo.github.io/from%20frequency%20to%20semantics/2017/03/11/embedding/
 
 문서 유사도 측정
 https://ratsgo.github.io/from%20frequency%20to%20semantics/2017/04/20/docsim/
+
+Konlpy TextRank 핵심어
+https://excelsior-cjh.tistory.com/93
+
+문장 요약
+http://aidev.co.kr/nlp/3106
+
+* NewsPaper 크롤링
+https://excelsior-cjh.tistory.com/entry/06-Newspaper-%EB%AA%A8%EB%93%88%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%89%B4%EC%8A%A4-%EA%B8%B0%EC%82%AC-%ED%81%AC%EB%A1%A4%EB%A7%81%ED%95%98%EA%B8%B0
+
+
+TextRank는 본래 띄어쓰기가 없는 중국어 기준으로 나왔기 때문에 이게 더 좋다
+https://lovit.github.io/nlp/2019/05/01/krwordrank_sentence/
+https://lovit.github.io/nlp/2018/04/16/krwordrank/
