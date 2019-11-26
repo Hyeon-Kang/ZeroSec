@@ -17,8 +17,8 @@ def clean_text(text):
 
 # 시작날짜 설정
 #URL = 'http://media.daum.net/ranking/popular?include=society,politics,culture,economic,foreign,digital&regDate=201807'
-mainURL = 'http://media.daum.net/ranking/popular?'
-popular = ['society']
+mainURL = 'http://media.daum.net/ranking/popular?' # 다음 뉴스 메인주소
+popular = ['society'] # 분야 설정
 myDatetimeStr = '20191101'
 myDatetime = datetime.datetime.strptime(myDatetimeStr, '%Y%m%d')
 data = []
