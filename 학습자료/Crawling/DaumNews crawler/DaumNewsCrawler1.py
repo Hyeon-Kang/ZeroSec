@@ -19,7 +19,7 @@ def clean_text(text):
 #URL = 'http://media.daum.net/ranking/popular?include=society,politics,culture,economic,foreign,digital&regDate=201807'
 mainURL = 'http://media.daum.net/ranking/popular?'
 popular = ['society']
-myDatetimeStr = '20191101'
+myDatetimeStr = '20191001'
 myDatetime = datetime.datetime.strptime(myDatetimeStr, '%Y%m%d')
 data = []
 for i in range(1,365):
