@@ -52,7 +52,8 @@ for i in range(1,365):
                     article_view_text_plain += clean_text(i)
                 data.append([myDatetime.strftime('%Y%m%d'), j, subject, article_view_text_plain])
     nextDate =  myDatetime + datetime.timedelta(days=1)
-    if nextDate.strftime('%d') == '01':
+    if nextDate.strftime('%d') == '01': # 매월 1일이 되면
+        # 파일로 저장함
         with open(myDatetime.strftime('%Y%m')+'article.csv', 'w', encoding='UTF8') as file:    # article.csv 파일을 쓰기 모드로 열기
             file.write('date,popular,subject,article\n')                  # 컬럼 이름 추가
             for k in data:                                              # data를 반복하면서
