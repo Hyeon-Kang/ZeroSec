@@ -11,7 +11,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 def clean_text(text):
     text = text.replace("\n", "")
     cleaned_text = re.sub('[a-zA-Z]', '', text)
-    cleaned_text = re.sub('[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]',
+    # 필터 목록에서 . 열외
+    cleaned_text = re.sub('[\{\}\[\]\/?,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]',
                           '', cleaned_text)
     return cleaned_text
 
