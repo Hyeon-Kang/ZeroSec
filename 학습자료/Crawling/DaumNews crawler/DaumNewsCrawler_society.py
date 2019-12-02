@@ -11,7 +11,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 def clean_text(text):
     text = text.replace("\n", "")
     cleaned_text = re.sub('[a-zA-Z]', '', text)
-    cleaned_text = re.sub('[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]',
+    # 필터 목록에서 . 열외
+    cleaned_text = re.sub('[\{\}\[\]\/?,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]',
                           '', cleaned_text)
     return cleaned_text
 
@@ -19,10 +20,10 @@ def clean_text(text):
 #URL = 'http://media.daum.net/ranking/popular?include=society,politics,culture,economic,foreign,digital&regDate=201807'
 mainURL = 'http://media.daum.net/ranking/popular?' # 다음 뉴스 메인주소
 popular = ['society'] # 분야 설정
-myDatetimeStr = '20191101'
+myDatetimeStr = '20191001'
 myDatetime = datetime.datetime.strptime(myDatetimeStr, '%Y%m%d')
 data = []
-for i in range(1,365):
+for i in range(1,365): # 실행 범위 지정
     i+=1
     for j in popular:
         URL = mainURL+'&include='+j+'&regDate='+myDatetime.strftime('%Y%m%d')
@@ -59,4 +60,3 @@ for i in range(1,365):
             for k in data:                                              # data를 반복하면서
                 file.write('{0},{1},{2},{3}\n'.format(k[0], k[1], k[2], k[3]))
         del data[:]
-    myDatetime += datetime.timedelta(days=1)
