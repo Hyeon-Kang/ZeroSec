@@ -12,23 +12,45 @@ https://m.blog.naver.com/PostView.nhn?blogId=racoon_z&logNo=220867813535&proxyRe
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Kakao 지도 시작하기</title>
+	<title>ASF Tracker</title>
 </head>
 <body>
-  <p style="margin-top:-12px">
-    <em class="link">
-        <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
-        </a>
-    </em>
-</p>
+	<p style="margin-top:-12px">
+		<em class="link">
+			<a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+				혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+			</a>
+		</em>
+	</p>
 	<div id="map" style="width:100%;height:800px;"></div>
+
+	<!-- 파일 불러오기 테스트 -->
+	<!-- <div><a href = "http://xn--ok0by3i2rikyj3wepne.xn--h32bi4v.xn--3e0b707e/201911adress.txt"></a></div> -->
+
+
 
 	<button onclick="openTextFile()">Open</button>
 	<div id='output'>...</div>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=530cf6ecf844f02e332aabe97f9dfd72&libraries=services"></script>
 	<script>
+
+		<!-- get 함수 추가 -->
+		var txtFile = new XMLHttpRequest();
+		txtFile.open("GET", "http://xn--ok0by3i2rikyj3wepne.xn--h32bi4v.xn--3e0b707e/201911adress.txt", true);
+		txtFile.onreadystatechange = function() {
+			if (txtFile.readyState === 4) {
+
+				if (txtFile.status === 200) {
+
+					allText = txtFile.responseText;
+					//document.write(allText);
+				}
+			}
+		}
+		txtFile.send(null);
+
+
 		var container = document.getElementById('map');  // 지도를 설정 값대로 표시합니다.
 		var options = {
 			center: new kakao.maps.LatLng(33.450701, 126.570667),  //지도 생성시 중심 좌표
@@ -38,8 +60,9 @@ https://m.blog.naver.com/PostView.nhn?blogId=racoon_z&logNo=220867813535&proxyRe
 		var map = new kakao.maps.Map(container, options);  // 지도를 웹에 생성합니다.
 
 
-    var geocoder = new kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체를 생성합니다
 
+<<<<<<< HEAD
     // 주소로 좌표를 검색합니다
     // geocoder.addressSearch('강원도 춘천시', function(result, status) {
     //
@@ -64,25 +87,51 @@ https://m.blog.naver.com/PostView.nhn?blogId=racoon_z&logNo=220867813535&proxyRe
     //     map.setCenter(coords);
     // }
 });
+=======
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('강원도 춘천시', function(result, status) {
 
-function openTextFile() {
-    var input = document.createElement("input");
+			// 정상적으로 검색이 완료됐으면
+			if (status === kakao.maps.services.Status.OK) {
 
-    input.type = "file";
-    input.accept = "text/plain"; // 확장자가 xxx, yyy 일때, ".xxx, .yyy"
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-    input.onchange = function (event) {
-        processFile(event.target.files[0]);
-    };
+				// 결과값으로 받은 위치를 마커로 표시합니다
+				var marker = new kakao.maps.Marker({
+					map: map,
+					position: coords
+				});
 
-    input.click();
-}
+				// 인포윈도우로 장소에 대한 설명을 표시합니다
+				var infowindow = new kakao.maps.InfoWindow({
+					content: '<div style="width:150px;text-align:center;padding:6px 0;">여깁니다</div>'
+				});
+				infowindow.open(map, marker);
 
-function processFile(file) {
-    var reader = new FileReader();
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map.setCenter(coords);
+			}
+		});
+>>>>>>> e44580e3e119b26aa5f22b805dfa08cbdc6f957f
 
-    reader.onload = function () {
-			//output.innerText = reader.result;
+		function openTextFile() {
+			var input = document.createElement("input");
+
+			input.type = "file";
+			input.accept = "text/plain"; // 확장자가 xxx, yyy 일때, ".xxx, .yyy"
+
+			input.onchange = function (event) {
+				processFile(event.target.files[0]);
+			};
+
+			input.click();
+		}
+
+		function processFile(file) {
+			var reader = new FileReader();
+
+			reader.onload = function () {
+				//output.innerText = reader.result;
 
 				var obs = reader.result;
 				var aaa = new Array();
@@ -93,22 +142,22 @@ function processFile(file) {
 
 					geocoder.addressSearch(aaa[i], function(result, status) {
 
-					// 정상적으로 검색이 완료됐으면
-					 if (status === kakao.maps.services.Status.OK) {
+						// 정상적으로 검색이 완료됐으면
+						if (status === kakao.maps.services.Status.OK) {
 
 							var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
 							// 결과값으로 받은 위치를 마커로 표시합니다
 							var marker = new kakao.maps.Marker({
-									map: map,
-									position: coords
+								map: map,
+								position: coords
 							});
 
 
 							// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 							map.setCenter(coords);
-					}
-				});
+						}
+					});
 
 				}
 
@@ -116,23 +165,23 @@ function processFile(file) {
 
 
 
-    };
+			};
 
-    reader.readAsText(file, /* optional */ "UTF-8");
-
-
+			reader.readAsText(file, /* optional */ "UTF-8");
 
 
-}
 
-    // var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); // 마커가 표시될 위치입니다
-    //
-    // var marker = new kakao.maps.Marker({  // 마커를 생성합니다
-    // position: markerPosition
-    // });
 
-    // 마커가 지도 위에 표시되도록 설정합니다
-    // marker.setMap(map);
+		}
+
+		// var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); // 마커가 표시될 위치입니다
+		//
+		// var marker = new kakao.maps.Marker({  // 마커를 생성합니다
+		// position: markerPosition
+		// });
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		// marker.setMap(map);
 
 	</script>
 </body>
