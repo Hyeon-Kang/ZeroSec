@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>ASF Tracker</title>
+</head>
+<body>
+	<p style="margin-top:-12px">
+		<em class="link">
+			<a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+				혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+			</a>
+		</em>
+	</p>
+	<div id="map" style="width:100%;height:800px;"></div>
+
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=530cf6ecf844f02e332aabe97f9dfd72&libraries=services"></script>
+	<script>
+
+	var container = document.getElementById('map');  // 지도를 설정 값대로 표시합니다.
+	var options = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667),  //지도 생성시 중심 좌표
+		level: 10 // 지도 확대 레벨
+	};
+
+	var map = new kakao.maps.Map(container, options);  // 지도를 웹에 생성합니다.
+
+
+	var geocoder = new kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체를 생성합니다
+
+
+    function readTextFile(file) {
+          var rawFile = new XMLHttpRequest();
+          rawFile.open("GET", file, true);
+          rawFile.onreadystatechange = function () {
+              if(rawFile.readyState === 4)
+              {
+                  if(rawFile.status === 200 || rawFile.status == 0)
+                  {
+                      var allText = rawFile.responseText;
+
+                      var obs = allText;
+                      var aaa = new Array();
+                      aaa = obs.split('\n');
+
+                      for(var i = 0; i < aaa.length; i++){
+                        geocoder.addressSearch(aaa[i], function(result, status) {
+
+                          // 정상적으로 검색이 완료됐으면
+                          if (status === kakao.maps.services.Status.OK) {
+
+                            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                            // 결과값으로 받은 위치를 마커로 표시합니다
+                            var marker = new kakao.maps.Marker({
+                              map: map,
+                              position: coords
+                            });
+                            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                            map.setCenter(coords);
+                          }
+                        });
+                      }
+                  }
+              }
+          };
+          rawFile.send(null);
+
+      }
+      readTextFile("http://localhost/201911adress.txt");
+
+
+	</script>
+</body>
+</html>
