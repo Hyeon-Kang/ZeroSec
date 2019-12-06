@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Undeviating
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140322
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+        	<span class="icon icon-cog"></span>
+			<h1><a href="#">Undeviating</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="active"><a href="#" accesskey="1" title="">Homepage</a></li>
+				<li><a href="#" accesskey="2" title="">Our Clients</a></li>
+				<li><a href="#" accesskey="3" title="">About Us</a></li>
+				<li><a href="#" accesskey="4" title="">Careers</a></li>
+				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="wrapper">
+	<div id="banner" class="container"><img src="images/banner.jpg" width="1200" height="500" alt="" /></div>
+	<div id="welcome" class="container">
+
+<div class="title">
+	  <h2>Welcome to our website</h2>
+		</div>
+		<p>This is <strong>Undeviating</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p>
+
+<!-- 지도 시작 -->
+	<p style="margin-top:-12px">
+		<em class="link">
+			<a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+				혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+			</a>
+		</em>
+	</p>
+	<div id="map" style="width:80%;height:800px;"></div>
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=530cf6ecf844f02e332aabe97f9dfd72&libraries=services"></script>
+	<script>
+
+	var container = document.getElementById('map');  // 지도를 설정 값대로 표시합니다.
+	var options = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667),  //지도 생성시 중심 좌표
+		level: 10 // 지도 확대 레벨
+	};
+
+	var map = new kakao.maps.Map(container, options);  // 지도를 웹에 생성합니다.
+
+
+	var geocoder = new kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체를 생성합니다
+
+
+    function readTextFile(file) {
+          var rawFile = new XMLHttpRequest();
+          rawFile.open("GET", file, true);
+          rawFile.onreadystatechange = function () {
+              if(rawFile.readyState === 4)
+              {
+                  if(rawFile.status === 200 || rawFile.status == 0)
+                  {
+                      var allText = rawFile.responseText;
+
+                      var obs = allText;
+                      var aaa = new Array();
+                      aaa = obs.split('\n');
+
+                      for(var i = 0; i < aaa.length; i++){
+                        geocoder.addressSearch(aaa[i], function(result, status) {
+
+                          // 정상적으로 검색이 완료됐으면
+                          if (status === kakao.maps.services.Status.OK) {
+
+                            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                            // 결과값으로 받은 위치를 마커로 표시합니다
+                            var marker = new kakao.maps.Marker({
+                              map: map,
+                              position: coords
+                            });
+                            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                            map.setCenter(coords);
+                          }
+                        });
+                      }
+                  }
+              }
+          };
+          rawFile.send(null);
+
+      }
+      readTextFile("http://xn--ok0by3i2rikyj3wepne.xn--h32bi4v.xn--3e0b707e/201911adress.txt");
+
+	</script>
+	<!--코드끝-->
+	</div>
+
+	<div id="three-column" class="container">
+		<div><span class="arrow-down"></span></div>
+		<div id="tbox1">
+			<div class="title">
+				<h2>Maecenas luctus</h2>
+			</div>
+			<p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac suscipit mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>
+			<a href="#" class="button">Learn More</a> </div>
+		<div id="tbox2">
+			<div class="title">
+				<h2>Integer gravida</h2>
+			</div>
+			<p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper suscipit eleifend. Donec mattis libero eget urna. Duis  velit ac mauris.</p>
+			<a href="#" class="button">Learn More</a> </div>
+		<div id="tbox3">
+			<div class="title">
+				<h2>Praesent mauris</h2>
+			</div>
+			<p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem suscipit  eleifend.</p>
+			<a href="#" class="button">Learn More</a> </div>
+	</div>
+	<div id="portfolio" class="container">
+		<div class="column1">
+			<div class="box">
+			  <h3>Vestibulum venenatis</h3>
+				<p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+		  <a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+		<div class="column2">
+			<div class="box">
+			  <h3>Praesent scelerisque</h3>
+				<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+		  <a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+		<div class="column3">
+			<div class="box">
+			  <h3>Donec dictum metus</h3>
+				<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+		  <a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+		<div class="column4">
+			<div class="box">
+			  <h3>Mauris vulputate dolor</h3>
+				<p>Rutrum fermentum nibh in augue praesent urna congue rutrum.</p>
+		  <a href="#" class="button button-small">Etiam posuere</a> </div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<div class="container">
+		<div class="fbox1">
+		<span class="icon icon-map-marker"></span>
+			<span>1234 Fictional Road Suite #789
+			<br />Nashville TN 00000</span>
+		</div>
+		<div class="fbox1">
+			<span class="icon icon-phone"></span>
+			<span>
+				Telephone: +1 800 123 4657
+			</span>
+		</div>
+		<div class="fbox1">
+			<span class="icon icon-envelope"></span>
+			<span>businessname@business.com</span>
+		</div>
+	</div>
+</div>
+<div id="copyright">
+	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+	<ul class="contact">
+		<li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
+		<li><a href="#" class="icon icon-facebook"><span></span></a></li>
+		<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+		<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+		<li><a href="#" class="icon icon-rss"><span>Pinterest</span></a></li>
+	</ul>
+</div>
+</body>
+</html>
